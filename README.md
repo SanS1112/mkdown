@@ -68,4 +68,6 @@ This full-stack application allows users to convert Markdown code into HTML text
   Open your browser and navigate to http://localhost:5173.
   Enter Markdown code in the input field.
   The converted HTML will be displayed in real-time.
+   > The output display box will appear once the input is made 
+
 
