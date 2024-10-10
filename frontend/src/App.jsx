@@ -44,7 +44,7 @@ return ()=>{
     <div className="App">
     <h4> Markdown Input Box</h4>
       <div className="inp-div" >
-      <textarea className="text1" onChange={handleChange} autoFocus>
+      <textarea className="textbox" onChange={handleChange} autoFocus>
         {" "}
       </textarea>
       </div>
