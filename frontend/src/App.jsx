@@ -3,6 +3,7 @@ import { useState, useRef, useEffect} from "react";
 
 export default function App() {
   const [inp, setInp] = useState("");
+   const[err, setErr]=useState("");
   const ThrottleRef = useRef(0);
   const socketRef=useRef(null);
 
@@ -10,7 +11,8 @@ useEffect(()=>{
 socketRef.current= new WebSocket('ws://localhost:8080');
 
 socketRef.current.onmessage= async(event)=>{
-  const text = await new Response(event.data).text()
+  const text = await new Response(event.data).text();
+   if(text==="Error"){setErr(text); setTimeout(()=>setErr(""),500); return;}
   setInp(text);
 };
 socketRef.current.onclose=()=>{
@@ -46,6 +48,7 @@ return ()=>{
       </textarea>
       </div>
       {inp && (<><h4>Converted HTML Box</h4>
+        {err && <p>{err}</p>}
         <div className="output" dangerouslySetInnerHTML={{ __html: inp }}></div>
         </>)}
     </div>
